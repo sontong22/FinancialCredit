@@ -45,7 +45,26 @@ NumberOfDependents: Number of dependents in family excluding themselves (spouse,
 
 We would construct several classification models, trying to predict whether a person would experience 90 days past due delinquency or worse.
 
+
 ### Process
 
-1. Clean up data. There are choices to be made, and in order to find the best model, we would output several cleaned csv data file.
-2. We train our models on the cleaned data. We'd use KNNClassifier and DecisionTree models and evaluate them with cross-validation. We'd tune our models and eventually combine them to see if we can improve our predictions. 
+1. Explore and clean up data: 
+
+- Plot to see the relationships among variables, find out data characteristics.
+
+- Remove unreasonable observation.
+
+- Implement data preprocessing pipeline to fill missing values with median and perform log transformation on right-skewed explanatory variables. 
+
+
+2. Train Models:
+
+- Use: SGDClassifier, KNNClassifier, DecisionTree, Random Forest, Voting Classifier (from KNN, Decision Tree, and Random Forest).
+
+- Evaluation method: use ROC curve and the area under the curve for evaluation since the classes are imbalanced.
+
+- Hyperparameter tuning: use GridSearch and RandomizedSearch with error score F1 (the harmonic mean of precision and recall).
+
+- Plot the importance of each explanatory variables in making predictions.
+
+- Choose the best model by plotting the ROC curve and the area under the curve with cross-validation.  
